@@ -1,0 +1,31 @@
+---
+title: "ESM 206 Assignment 4"
+author: "Cameryn Brock and Allie Hacker"
+date: "11/6/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+# Attach packages
+
+library(tidyverse)
+library(janitor)
+
+# Read in & clean up data
+
+lobster_data <- read_csv("lobster_abundance_sbc_lter.csv", 
+                         na = "-99999") %>% 
+  clean_names()
+
+# Tidy data by uncounting counts
+
+lobster_tidy <- lobster_data %>% 
+  uncount(count)
+
+```
+
