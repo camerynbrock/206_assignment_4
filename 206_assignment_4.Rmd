@@ -5,11 +5,11 @@ date: "11/6/2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 # Attach packages
 
@@ -32,7 +32,15 @@ lobster_mpa <- lobster_tidy %>%
   mutate(mpa= ifelse(site %in% c("IVEE", "NAPL"), "MPA", "non-MPA" ))
 
 ```
+#### Introduction
 
+To be written
+
+#### Data and Methods
+
+To be written
+
+#### Results
 ```{r}
 # Part A: Changes in annual lobster abundance by site
 
@@ -48,12 +56,50 @@ ggplot(lobster_abundance,
            y = n, 
            group = site, 
            color = mpa, 
-           size = mpa))+
+           size = mpa)
+       )+
   geom_line()+
-  scale_color_manual(values = c("gray", "cyan4"))+
-  scale_size_manual(values = c(0.5, 1.2))+
+  scale_color_manual(values = c("cyan4", "gray"))+
+  scale_size_manual(values = c(1.2, 0.5))+
+  theme(legend.title = element_blank(),
+        legend.position = c(2012.5, 900)
+        )+
   theme_minimal()+
-  labs(x= "Year", y = "Lobsters observed", title = "California Spiny Lobster abundance in Santa Barbara Channel (2012-2018")
+  labs(x= "Year", y = "Lobsters observed")+
+  scale_x_continuous(breaks = seq(2012, 2018, 1), expand = c(0,0))+
+  scale_y_continuous(breaks = seq(0, 1010, 200))+
+  coord_cartesian(clip = 'off')+
+  annotate("text", 
+           x = 2018.05, 
+           y = 946, 
+           label = "Isla Vista", 
+           size = 3, 
+           hjust = 0)+
+  annotate("text", 
+           x = 2018.05, 
+           y = 290, 
+           label = "Naples", 
+           size = 3, 
+           hjust = 0)+
+  annotate("text", 
+           x = 2018.05, 
+           y = 164, 
+           label = "Mohawk", 
+           size = 3, 
+           hjust = 0)+
+  annotate("text", 
+           x = 2018.05, 
+           y = 355, 
+           label = "Carpenteria", 
+           size = 3, 
+           hjust = 0)+
+  annotate("text", 
+           x = 2018.05, 
+           y = 54, 
+           label = "Arroyo Quemado", 
+           size = 3, 
+           hjust = 0)
 
 ```
+**Figure 1. California Spiny Lobster abundance in Santa Barbara Channel (2012-2018)** 
 
