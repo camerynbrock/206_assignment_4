@@ -27,5 +27,33 @@ lobster_data <- read_csv("lobster_abundance_sbc_lter.csv",
 lobster_tidy <- lobster_data %>% 
   uncount(count)
 
+# Add MPA column to data
+lobster_mpa <- lobster_tidy %>% 
+  mutate(mpa= ifelse(site %in% c("IVEE", "NAPL"), "MPA", "non-MPA" ))
+
+```
+
+```{r}
+# Part A: Changes in annual lobster abundance by site
+
+#get annual count of lobsters for each site
+lobster_abundance <- lobster_tidy %>% 
+  count(site, year) %>% 
+  mutate(mpa= ifelse(site %in% c("IVEE", "NAPL"), "MPA", "non-MPA" ))
+
+# graph lobster abundance
+
+ggplot(lobster_abundance, 
+       aes(x = year, 
+           y = n, 
+           group = site, 
+           color = mpa, 
+           size = mpa))+
+  geom_line()+
+  scale_color_manual(values = c("gray", "cyan4"))+
+  scale_size_manual(values = c(0.5, 1.2))+
+  theme_minimal()+
+  labs(x= "Year", y = "Lobsters observed", title = "California Spiny Lobster abundance in Santa Barbara Channel (2012-2018")
+
 ```
 
