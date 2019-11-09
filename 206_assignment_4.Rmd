@@ -41,7 +41,10 @@ To be written
 To be written
 
 #### Results
-```{r}
+
+Data on California Spiny Lobster abundance was collected at five LTER sites. Two of the sites, Isla Vista and Naples, were established as Marine Protected Areas (MPAs) in 2012. Lobster abundance increased from 2012 to 2018 at all sampling locations, but the two sites in MPAs had the greatest percent increase in lobster abundance (Lobster abundance in Isla Vista and Naples increased 36-fold and 49-fold, respectively).
+
+```{r Part A: Changes in lobster abundance}
 # Part A: Changes in annual lobster abundance by site
 
 #get annual count of lobsters for each site
@@ -59,16 +62,17 @@ ggplot(lobster_abundance,
            size = mpa)
        )+
   geom_line()+
-  scale_color_manual(values = c("cyan4", "gray"))+
+  scale_color_manual(values = c("aquamarine3", "indianred3"))+
   scale_size_manual(values = c(1.2, 0.5))+
-  theme(legend.title = element_blank(),
-        legend.position = c(2012.5, 900)
-        )+
   theme_minimal()+
-  labs(x= "Year", y = "Lobsters observed")+
+  labs(x= "Year", y = "Lobsters abundance")+
   scale_x_continuous(breaks = seq(2012, 2018, 1), expand = c(0,0))+
-  scale_y_continuous(breaks = seq(0, 1010, 200))+
+  scale_y_continuous(breaks = seq(0, 1010, 200), expand = c(0,100))+
   coord_cartesian(clip = 'off')+
+  theme(legend.title = element_blank(),
+        legend.background = element_rect(color = "black"),
+        legend.position = c(0.2, 0.8),
+        plot.margin = unit(c(0.5,2.5,0,0),"cm"))+
   annotate("text", 
            x = 2018.05, 
            y = 946, 
@@ -101,7 +105,8 @@ ggplot(lobster_abundance,
            hjust = 0)
 
 ```
-**Figure 1. California Spiny Lobster abundance in Santa Barbara Channel (2012-2018)** 
+
+**Figure 1.** California Spiny Lobster abundance in the Santa Barbara Channel from 2012 to 2018. Sites shown in tuorquoise were established as Marine Protected Areas (MPAs) in 2012.
 
 ```{r}
 # Mean Lobster size at MPA vs. non-MPA
