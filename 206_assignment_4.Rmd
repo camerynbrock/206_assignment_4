@@ -42,6 +42,8 @@ To be written
 
 #### Results
 
+##### 1. Changes in annual lobster abundance.
+
 Data on California Spiny Lobster abundance was collected at five LTER sites. Two of the sites, Isla Vista and Naples, were established as Marine Protected Areas (MPAs) in 2012. Lobster abundance increased from 2012 to 2018 at all sampling locations, but the two sites in MPAs had the greatest percent increase in lobster abundance (Lobster abundance in Isla Vista and Naples increased 36-fold and 49-fold, respectively).
 
 ```{r Part A: Changes in lobster abundance}
@@ -148,6 +150,26 @@ mpa_2018_ttest
 ```
 Mean lobster size in Marine Protected Areas ( mean, sd) and non-Marine Protected Areas (mean, sd) in 2012 differed significantly (p-value =`r mpa_2012_ttest$p.value`)
 
+##### 2. Shifts in lobster size distributions.
+
+```{r fig.asp = 8/4}
+# Compare lobster size distributions by site for 2012 and 2018
+
+lobster_size_dist <- lobster_tidy %>% 
+  select(year, site, size_mm) %>% 
+  filter(year %in% c("2012", "2018"))
+
+ggplot(lobster_size_dist, aes(x = size_mm)) +
+  geom_histogram() + 
+  facet_wrap(~ site + year,
+             ncol = 2) +
+  theme_minimal() 
+
+```
+
+
+
+
 ```{r}
 # Change in size at MPA sites from 2012 to 2018 (two-sample, two-sided, unpaired t-test)
 
@@ -179,4 +201,6 @@ non_mpa_size_ttest <- t.test(non_mpa_size_2012_sample, non_mpa_size_2018_sample)
 non_mpa_size_ttest
 
 ```
+
+
 
