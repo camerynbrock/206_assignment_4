@@ -159,15 +159,56 @@ lobster_size_dist <- lobster_tidy %>%
   select(year, site, size_mm) %>% 
   filter(year %in% c("2012", "2018"))
 
-ggplot(lobster_size_dist, aes(x = size_mm)) +
-  geom_histogram() + 
-  facet_wrap(~ site + year,
-             ncol = 2) +
-  theme_minimal() 
+```
+
+
+```{r}
+# Explore with faceted densities 
+
+lobster_size_2012 <- lobster_size_dist %>% 
+  filter(year == "2012")
+
+lobster_size_2018 <- lobster_size_dist %>% 
+  filter(year == "2018")
+
+library(ggridges)
+
+ggplot(lobster_size_dist) +
+  stat_density_ridges(aes(x = size_mm,
+               y = ..density..),
+               quantile_lines = TRUE,
+               quantiles = 3) +
+  stat_density_ridges(aes(x = size_mm,
+               y = -..density..),
+               quantile_lines = TRUE,
+               quantiles = 2) +
+  facet_wrap(~site,
+             nrow = 1) 
 
 ```
 
 
+```{r}
+
+ggplot(data = lobster_size_dist, aes(x = size_mm,
+                                     y = factor(year, level = c('2018', '2012')))) + 
+  stat_density_ridges(aes(fill = site),
+                      color = "gray30",
+                      quantile_lines = TRUE,
+                      quantiles = 2,
+                      alpha = 0.5,
+                      show.legend = FALSE) +
+  xlim(30, 130) +
+    scale_fill_manual(values = c("IVEE" = "aquamarine3",
+                                 "NAPL" = "aquamarine3",
+                                 "MOHK" = "indianred3",
+                                 "CARP" = "indianred3",
+                                 "AQUE" = "indianred3")) +
+  facet_wrap(~site,
+             nrow = 1) +
+  theme_minimal()
+
+```
 
 
 ```{r}
