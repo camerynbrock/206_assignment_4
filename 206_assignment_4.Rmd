@@ -108,7 +108,53 @@ ggplot(lobster_abundance,
 
 ```
 
-**Figure 1.** California Spiny Lobster abundance in the Santa Barbara Channel from 2012 to 2018. Sites shown in tuorquoise were established as Marine Protected Areas (MPAs) in 2012.
+**Figure 1.** California Spiny Lobster abundance in the Santa Barbara Channel from 2012 to 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012.
+
+##### 2. Shifts in lobster size distributions.
+
+```{r Part B: Shifts in lobster size distributions, message = FALSE, warning = FALSE, fig.asp = 7/20}
+# Compare lobster size distributions by site for 2012 and 2018
+
+lobster_size_dist <- lobster_tidy %>% 
+  select(year, site, size_mm) %>% 
+  filter(year %in% c("2012", "2018")) %>% 
+  mutate(mpa = ifelse(site %in% c("IVEE", "NAPL"), "MPA", "Non-MPA" ))
+
+library(ggridges)
+
+site_labs <- c("Arroyo Quemado", "Carpinteria", "Isla Vista", "Mohawk", "Naples")
+names(site_labs) <- c("AQUE", "CARP", "IVEE", "MOHK", "NAPL")
+
+ggplot(data = lobster_size_dist, aes(x = size_mm,
+                                     y = factor(year, level = c('2018', '2012')))) + 
+  stat_density_ridges(aes(fill = mpa,
+                          alpha = year),
+                      color = "white",
+                      size = 0.4,
+                      quantile_lines = TRUE,
+                      quantiles = 2) +
+  facet_wrap(~site,
+             nrow = 1,
+             labeller = labeller(site = site_labs)) +
+  scale_x_continuous(breaks = c(50, 75, 100),
+                     limits = c(25, 125),
+                     expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0.04, 0.04)) +
+  scale_fill_manual(values = c("aquamarine3", "indianred3")) +
+  scale_alpha(guide = "none",
+              range = c(0.55, 0.95)) +
+  theme_minimal() +
+  theme(panel.spacing.x = unit(0.5, "lines"),
+        legend.key.size = unit(0.7,"line")) +
+  labs(x = "Lobster size (mm)",
+       y = element_blank()) +
+  theme(legend.title = element_blank(),
+        legend.position = c(0, 0.9),
+        legend.text = element_text(size = 8))
+
+```
+
+**Figure 2.** California Spiny Lobster size distributions in the Santa Barbara Channel in 2012 and 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012. White lines indicate the median lobster size for each facet. 
 
 ```{r}
 # Mean Lobster size at MPA vs. non-MPA
@@ -149,50 +195,6 @@ mpa_2018_ttest
 
 ```
 Mean lobster size in Marine Protected Areas ( mean, sd) and non-Marine Protected Areas (mean, sd) in 2012 differed significantly (p-value =`r mpa_2012_ttest$p.value`)
-
-##### 2. Shifts in lobster size distributions.
-
-```{r fig.asp = 8/4}
-# Compare lobster size distributions by site for 2012 and 2018
-
-lobster_size_dist <- lobster_tidy %>% 
-  select(year, site, size_mm) %>% 
-  filter(year %in% c("2012", "2018"))
-
-```
-
-
-```{r fig.asp = 7/20}
-
-library(ggridges)
-
-ggplot(data = lobster_size_dist, aes(x = size_mm,
-                                     y = factor(year, level = c('2018', '2012')))) + 
-  stat_density_ridges(aes(fill = site,
-                          alpha = year),
-                      color = "white",
-                      size = 0.4,
-                      quantile_lines = TRUE,
-                      quantiles = 2,
-                      show.legend = FALSE) +
-    scale_fill_manual(values = c("IVEE" = "aquamarine3",
-                                 "NAPL" = "aquamarine3",
-                                 "MOHK" = "indianred3",
-                                 "CARP" = "indianred3",
-                                 "AQUE" = "indianred3")) +
-  scale_alpha(range = c(0.6, 0.9)) +
-  facet_wrap(~site,
-             nrow = 1) +
-  scale_x_continuous(breaks = c(50, 75, 100),
-                     limits = c(25, 125)) +
-  theme_minimal() +
-  theme(panel.spacing.x = unit(0.25, "lines")) +
-  labs(x = "Lobster Size (mm)",
-       y = "Count")
-  
-
-```
-
 
 ```{r}
 # Change in size at MPA sites from 2012 to 2018 (two-sample, two-sided, unpaired t-test)
