@@ -233,6 +233,14 @@ non_mpa_size_ttest
 
 ```
 
+```{r}
+# Cam double-checking t-test for mean lobster sizes at MPA and non-MPA sites
+
+
+
+```
+
+
 #### Summary
 
 - To be written
