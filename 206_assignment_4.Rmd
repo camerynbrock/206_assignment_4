@@ -108,9 +108,11 @@ ggplot(lobster_abundance,
 
 ```
 
-**Figure 1.** California Spiny Lobster abundance in the Santa Barbara Channel from 2012 to 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012.
+***Figure 1.** California Spiny Lobster abundance in the Santa Barbara Channel from 2012 to 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012.*
 
 ##### 2. Shifts in lobster size distributions.
+
+There was a notable increase in lobster size between 2012 and 2018 in sites that were established as MPAs (Isla Vista, Naples). No substantial shifts in lobster size were observed in sites that were not established as MPAs (Arroyo Quemado, Carpinteria, Mohawk).  
 
 ```{r Part B: Shifts in lobster size distributions, message = FALSE, warning = FALSE, fig.asp = 7/20}
 # Compare lobster size distributions by site for 2012 and 2018
@@ -149,14 +151,16 @@ ggplot(data = lobster_size_dist, aes(x = size_mm,
   labs(x = "Lobster size (mm)",
        y = element_blank()) +
   theme(legend.title = element_blank(),
-        legend.position = c(0, 0.9),
-        legend.text = element_text(size = 8))
+        legend.position = c(0, 0.85),
+        legend.text = element_text(size = 8),
+        panel.grid.minor.x = element_blank())
 
 ```
 
-**Figure 2.** California Spiny Lobster size distributions in the Santa Barbara Channel in 2012 and 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012. White lines indicate the median lobster size for each facet. 
+***Figure 2.** California Spiny Lobster size distributions in the Santa Barbara Channel in 2012 and 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012. White lines indicate the median lobster size for each facet.*
 
-```{r}
+
+```{r, include = FALSE}
 # Mean Lobster size at MPA vs. non-MPA
 
 lobster_size_mpa <- lobster_mpa %>% 
@@ -194,9 +198,10 @@ mpa_2018_ttest <- t.test(mpa_2018_sample, non_mpa_2018_sample)
 mpa_2018_ttest
 
 ```
-Mean lobster size in Marine Protected Areas ( mean, sd) and non-Marine Protected Areas (mean, sd) in 2012 differed significantly (p-value =`r mpa_2012_ttest$p.value`)
 
-```{r}
+Mean lobster size in Marine Protected Areas (mean, sd) and non-Marine Protected Areas (mean, sd) in 2012 differed significantly (p-value =`r round(mpa_2012_ttest$p.value, 4)`)
+
+```{r, include = FALSE}
 # Change in size at MPA sites from 2012 to 2018 (two-sample, two-sided, unpaired t-test)
 
 mpa_size_2012_sample <- lobster_mpa %>% 
@@ -228,5 +233,12 @@ non_mpa_size_ttest
 
 ```
 
+#### Summary
 
+- To be written
+- as bullets
+
+#### References 
+
+*Reed D. 2019.* SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012. Environmental Data Initiative. https://doi.org/10.6073/pasta/a593a675d644fdefb736750b291579a0. Dataset accessed 10/30/2019.
 
