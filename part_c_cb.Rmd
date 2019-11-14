@@ -1,0 +1,37 @@
+---
+title: "Cam Checking Part C"
+author: "Cameryn Brock"
+date: "11/13/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This rmd file is for Cam to do Part C without the temptation of being influenced by Allie's answers! 
+
+```{r}
+
+# 1. For 2012 observations, is there a significant difference in lobster size between MPA and non-MPA sites? 
+
+```
+
+```{r}
+
+# 2. For 2018 observations, is there a significant difference in lobster size between MPA and non-MPA sites? 
+
+```
+
+```{r}
+
+# 3. For MPA sites only, is there a significant mean size difference in lobsters observed in 2012 vs. 2018?
+
+```
+
+```{r}
+
+# 4. For non-MPA sites only, is there a significant mean size difference in lobsters observed in 2012 vs. 2018?
+
+```
+

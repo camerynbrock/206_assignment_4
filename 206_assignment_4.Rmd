@@ -151,7 +151,7 @@ ggplot(data = lobster_size_dist, aes(x = size_mm,
   labs(x = "Lobster size (mm)",
        y = element_blank()) +
   theme(legend.title = element_blank(),
-        legend.position = c(0.81, 0.85),
+        legend.position = c(0.805, 0.85),
         legend.text = element_text(size = 8),
         panel.grid.minor.x = element_blank(),
         legend.margin = unit(1, "lines"),
@@ -233,13 +233,6 @@ non_mpa_size_2018_sample <- lobster_mpa %>%
 non_mpa_size_ttest <- t.test(non_mpa_size_2012_sample, non_mpa_size_2018_sample)
 
 non_mpa_size_ttest
-
-```
-
-```{r}
-# Cam double-checking t-test for mean lobster sizes at MPA and non-MPA sites
-
-
 
 ```
 
