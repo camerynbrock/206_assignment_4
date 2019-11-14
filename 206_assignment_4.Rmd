@@ -254,23 +254,30 @@ non_mpa_size_ttest
 
 ```
 
-In 2012, mean lobster size in nonMPA sites was larger than in MPA sites by about 7.5mm (t test (`r round(mpa_2012_ttest$parameter, 0)`), t = `r round(mpa_2012_ttest$statistic, 3)`, p-value =`r round(mpa_2012_ttest$p.value, 4)`). In 2018, mean lobster size was larger in MPAs than in nonMPAs by about 4mm (t test (`r round(mpa_2018_ttest$parameter, 0)`) p-value = `r round(mpa_2018_ttest$p.value, 10)`). Between 2012 and 2018, mean lobster size in MPA sites increased by about 10mm (t test (`r round(mpa_size_ttest$parameter, 0)`) p-value = `r round(mpa_size_ttest$p.value, 10)`)
+In 2012, mean lobster size in non-MPA sites was larger than in MPA sites by about 7.5mm (t test (`r round(mpa_2012_ttest$parameter, 0)`), t = `r round(mpa_2012_ttest$statistic, 2)`, p-value = `r round(mpa_2012_ttest$p.value, 4)`). In 2018, mean lobster size was larger in MPAs than in non-MPAs by about 4mm (t test (`r round(mpa_2018_ttest$parameter, 0)`), t = `r round(mpa_2018_ttest$statistic, 2)`, p-value = `r round(mpa_2018_ttest$p.value, 14)`). Between 2012 and 2018, mean lobster size in MPA sites increased by about 10mm (t test (`r round(mpa_size_ttest$parameter, 0)`),t = `r round(mpa_size_ttest$statistic, 2)`, p-value = `r round(mpa_size_ttest$p.value, 6)`) and decreased by about 1.3mm in non-MPA sites (t test (`r round(non_mpa_size_ttest$parameter, 0)`), t = `r round(non_mpa_size_ttest$statistic, 2)`, p-value = `r round(non_mpa_size_ttest$p.value, 2)`))
 
 ##### 3. Mean lobster sizes at MPA and non-MPA sites in 2012 and 2018.
 
-```{r}
+***Table 1.** California Spiny Lobster mean size, standard deviation, and sample size in 2012 and 2018.*
+
+```{r, message = FALSE, warning = FALSE}
+
+library(knitr)
+library(kableExtra)
 
 lobster_summary <- lobster_size_dist %>% 
-  group_by(mpa) %>% 
+  group_by(mpa, year) %>% 
   summarize(mean_size = mean(size_mm),
             sd_size = sd(size_mm),
             sample_n = n()) %>% 
   rename("Status" = mpa,
          "Sample Size" = sample_n,
          "Mean Size (mm)" = mean_size,
-         "Standard Deviation" = sd_size) 
+         "Standard Deviation" = sd_size,
+         "Year" = year) 
 
-lobster_summary
+kable(lobster_summary, digits = 2) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover")) 
 
 ```
 
