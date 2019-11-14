@@ -235,8 +235,8 @@ library(kableExtra)
 
 lobster_summary <- lobster_size_dist %>% 
   group_by(mpa, year) %>% 
-  summarize(mean_size = mean(size_mm),
-            sd_size = sd(size_mm),
+  summarize(mean_size = mean(size_mm, na.rm = TRUE),
+            sd_size = sd(size_mm, na.rm = TRUE ),
             sample_n = n()) %>% 
   rename("Status" = mpa,
          "Sample Size" = sample_n,
@@ -244,7 +244,7 @@ lobster_summary <- lobster_size_dist %>%
          "Standard Deviation" = sd_size,
          "Year" = year) 
 
-kable(lobster_summary, digits = 4) %>% 
+kable(lobster_summary, digits = 2) %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) 
 
 ```
