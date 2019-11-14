@@ -15,11 +15,47 @@ This rmd file is for Cam to do Part C without the temptation of being influenced
 
 # 1. For 2012 observations, is there a significant difference in lobster size between MPA and non-MPA sites? 
 
+library(tidyverse)
+
+# Create two dfs. One only including 2012 MPA lobster size and one with only 2012 non-MPA size. 
+
+mpa_2012_ttest_cb <- lobster_size_dist %>% 
+  filter(mpa == "MPA",
+         year == "2012") %>% 
+  pull(size_mm)
+
+nonmpa_2012_ttest_cb <- lobster_size_dist %>% 
+  filter(mpa == "Non-MPA",
+         year == "2012") %>% 
+  pull(size_mm)
+
+size_ttest_2012_cb <- t.test(mpa_2012_ttest_cb, nonmpa_2012_ttest_cb)
+
+size_ttest_2012_cb
+
+# Equal to Allie's
+
 ```
 
 ```{r}
 
 # 2. For 2018 observations, is there a significant difference in lobster size between MPA and non-MPA sites? 
+
+mpa_2018_ttest_cb <- lobster_size_dist %>% 
+  filter(mpa == "MPA",
+         year == "2018") %>% 
+  pull(size_mm)
+
+nonmpa_2018_ttest_cb <- lobster_size_dist %>% 
+  filter(mpa == "Non-MPA",
+         year == "2018") %>% 
+  pull(size_mm)
+
+size_ttest_2018_cb <- t.test(mpa_2018_ttest_cb, nonmpa_2018_ttest_cb)
+
+size_ttest_2018_cb
+
+# Equal to Allie's
 
 ```
 
@@ -27,11 +63,20 @@ This rmd file is for Cam to do Part C without the temptation of being influenced
 
 # 3. For MPA sites only, is there a significant mean size difference in lobsters observed in 2012 vs. 2018?
 
+size_ttest_mpa_cb <- t.test(mpa_2012_ttest_cb, mpa_2018_ttest_cb)
+
+size_ttest_mpa_cb
+
 ```
 
 ```{r}
 
 # 4. For non-MPA sites only, is there a significant mean size difference in lobsters observed in 2012 vs. 2018?
+
+size_ttest_nonmpa_cb <- t.test(nonmpa_2012_ttest_cb, nonmpa_2018_ttest_cb)
+
+size_ttest_nonmpa_cb
+
 
 ```
 
