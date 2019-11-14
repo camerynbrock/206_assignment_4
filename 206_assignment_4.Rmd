@@ -202,7 +202,6 @@ mpa_2018_ttest
 
 ```
 
-Mean lobster size in Marine Protected Areas (mean, sd) and non-Marine Protected Areas (mean, sd) in 2012 differed significantly (p-value =`r round(mpa_2012_ttest$p.value, 4)`)
 
 ```{r, include = FALSE}
 # Change in size at MPA sites from 2012 to 2018 (two-sample, two-sided, unpaired t-test)
@@ -236,7 +235,7 @@ non_mpa_size_ttest
 
 ```
 
-```{r}
+```{r, include = FALSE}
 
 # Cam's recommendation to change this part to 
 
@@ -252,6 +251,26 @@ mpa_size_ttest
 non_mpa_size_ttest <- t.test(non_mpa_2012_sample, non_mpa_2018_sample)
 
 non_mpa_size_ttest
+
+```
+
+In 2012, mean lobster size in nonMPA sites was larger than in MPA sites by about 7.5mm (t test (`r round(mpa_2012_ttest$parameter, 0)`), t = `r round(mpa_2012_ttest$statistic, 3)`, p-value =`r round(mpa_2012_ttest$p.value, 4)`). In 2018, mean lobster size was larger in MPAs than in nonMPAs by about 4mm (t test (`r round(mpa_2018_ttest$parameter, 0)`) p-value = `r round(mpa_2018_ttest$p.value, 10)`). Between 2012 and 2018, mean lobster size in MPA sites increased by about 10mm (t test (`r round(mpa_size_ttest$parameter, 0)`) p-value = `r round(mpa_size_ttest$p.value, 10)`)
+
+##### 3. Mean lobster sizes at MPA and non-MPA sites in 2012 and 2018.
+
+```{r}
+
+lobster_summary <- lobster_size_dist %>% 
+  group_by(mpa) %>% 
+  summarize(mean_size = mean(size_mm),
+            sd_size = sd(size_mm),
+            sample_n = n()) %>% 
+  rename("Status" = mpa,
+         "Sample Size" = sample_n,
+         "Mean Size (mm)" = mean_size,
+         "Standard Deviation" = sd_size) 
+
+lobster_summary
 
 ```
 
