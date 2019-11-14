@@ -244,7 +244,7 @@ lobster_summary <- lobster_size_dist %>%
          "Standard Deviation" = sd_size,
          "Year" = year) 
 
-kable(lobster_summary, digits = 2) %>% 
+kable(lobster_summary, digits = 4) %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) 
 
 ```
