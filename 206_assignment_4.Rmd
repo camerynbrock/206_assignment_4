@@ -204,38 +204,6 @@ mpa_2018_ttest
 
 
 ```{r, include = FALSE}
-# Change in size at MPA sites from 2012 to 2018 (two-sample, two-sided, unpaired t-test)
-
-mpa_size_2012_sample <- lobster_mpa %>% 
-  filter(mpa == "MPA", year == "2012") %>% 
-  pull(size_mm)
-
-mpa_size_2018_sample <- lobster_mpa %>% 
-  filter(mpa == "MPA", year == "2018") %>% 
-  pull(size_mm)
-
-mpa_size_ttest <- t.test(mpa_size_2012_sample, mpa_size_2018_sample)
-
-mpa_size_ttest
-
-
-# Change in size at non-MPA sizes from 2012 to 2018 (two-sample, two-sided, paired t-test)
-
-non_mpa_size_2012_sample <- lobster_mpa %>% 
-  filter(mpa == "non-MPA", year == "2012") %>% 
-  pull(size_mm)
-
-non_mpa_size_2018_sample <- lobster_mpa %>% 
-  filter(mpa == "non-MPA", year == "2018") %>% 
-  pull(size_mm)
-
-non_mpa_size_ttest <- t.test(non_mpa_size_2012_sample, non_mpa_size_2018_sample)
-
-non_mpa_size_ttest
-
-```
-
-```{r, include = FALSE}
 
 # Cam's recommendation to change this part to 
 
