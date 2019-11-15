@@ -35,6 +35,8 @@ lobster_mpa <- lobster_tidy %>%
 #### Introduction
 
 To be written
+-purpose: investigate how MPA status effects lobster abundance and size
+-
 
 #### Data and Methods
 
@@ -44,7 +46,7 @@ To be written
 
 ##### 1. Changes in annual lobster abundance.
 
-Data on California Spiny Lobster abundance was collected at five LTER sites. Two of the sites, Isla Vista and Naples, were established as Marine Protected Areas (MPAs) in 2012. Lobster abundance increased from 2012 to 2018 at all sampling locations, but the two sites in MPAs had the greatest percent increase in lobster abundance. The number of lobsters observed at Isla Vista increased 36-fold from 26 in 2012 t0 946 in 2018. At Naples, lobster abundance increased 49-fold from 6 lobsters in 2012 to 298 in 2018.
+Data on California Spiny Lobster abundance was collected at five LTER sites. Two of the sites, Isla Vista and Naples, were established as Marine Protected Areas (MPAs) in 2012. Lobster abundance increased from 2012 to 2018 at all sampling locations, but the two sites in MPAs had the greatest percent increase in lobster abundance. The number of lobsters observed at Isla Vista increased 36-fold from 26 in 2012 t0 946 in 2018. At Naples, lobster abundance increased 49-fold from 6 lobsters in 2012 to 298 in 2018. ** **
 
 ```{r Part A: Changes in lobster abundance}
 # Part A: Changes in annual lobster abundance by site
