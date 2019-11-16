@@ -36,7 +36,8 @@ lobster_mpa <- lobster_tidy %>%
 
 To be written
 -purpose: investigate how MPA status effects lobster abundance and size
--
+
+![California Spiny Lobster. Credit: [Catalina Island Marine Institute](https://cimioutdoored.org/ca-spiny-lobster/)](lobster_image.jpg)
 
 #### Data and Methods
 
@@ -254,7 +255,7 @@ ggplot(data = lobster_size_dist, aes(x = size_mm,
 
 ***Figure 2.** California Spiny Lobster size distributions in the Santa Barbara Channel in 2012 and 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012. White lines indicate the median lobster size for each facet.*
 
-Notably, mean lobster size in MPA sites was  larger in 2018 (77.6 ± 11.7mm, mean ± standard deviation) compared to in 2012 (67.4 ± 12.2mm)  and the increase was statistically significant with a large effect size (two-sample t-test t (`r round(mpa_size_ttest$parameter, 0)`) = `r round(mpa_size_ttest$statistic, 1)`, p < 0.001, Cohen's d = `r round(mpa_size_effect$estimate, 2)`)). No significant change in mean lobster size was observed in sites that were not established as MPAs (Arroyo Quemado, Carpinteria, and Mohawk) between 2012 (74.9 ± 12.4mm) and 2018 (73.6 ± 10.1mm; two-sample t-test t(`r round(non_mpa_size_ttest$parameter, 0)`) = `r round(non_mpa_size_ttest$statistic, 1)`, p = `r round(non_mpa_size_ttest$p.value, 2)`, Cohen's d = `r round(non_mpa_size_effect$estimate, 2)`).  
+Notably, mean lobster size in MPA sites was  larger in 2018 (77.6 ± 11.7mm, mean ± standard deviation) compared to in 2012 (67.4 ± 12.2mm)  and the increase was statistically significant with a large effect size (two-sample t-test, t (`r round(mpa_size_ttest$parameter, 0)`) = `r round(mpa_size_ttest$statistic, 1)`, p < 0.001, Cohen's d = `r round(mpa_size_effect$estimate, 2)`)). No significant change in mean lobster size was observed in sites that were not established as MPAs (Arroyo Quemado, Carpinteria, and Mohawk) between 2012 (74.9 ± 12.4mm) and 2018 (73.6 ± 10.1mm; two-sample t-test, t(`r round(non_mpa_size_ttest$parameter, 0)`) = `r round(non_mpa_size_ttest$statistic, 1)`, p = `r round(non_mpa_size_ttest$p.value, 2)`, Cohen's d = `r round(non_mpa_size_effect$estimate, 2)`).  
 
 ***Table 1.** California Spiny Lobster mean size, standard deviation, and sample size for samples collected in MPA and non-MPA sites in 2012 and 2018. MPA sites include Isla Vista and Naples and non-MPA sites include Arroyo Quemado, Carpinteria, and Mohawk.*
 
@@ -312,7 +313,7 @@ kable(lobster_table_wide,
 
 ```
 
-In 2012, mean lobster size in MPA sites was smaller than in non-MPA sites, and this difference was statistically significant with a medium effect size (two-sample t-test t(`r round(mpa_2012_ttest$parameter, 0)`) = `r round(mpa_2012_ttest$statistic, 1)`, p < 0.005, Cohen's d = `r round(mpa_2012_effect$estimate, 2)`). In 2018, mean lobster size was larger in MPAs than in non-MPAs, and that difference was statistically significant with a small effect size (two-sample t-test t(`r round(mpa_2018_ttest$parameter, 0)`) = `r round(mpa_2018_ttest$statistic, 1)`, p < 0.001, Cohen's d = `r round(mpa_2018_effect$estimate, 2)`).
+In 2012, mean lobster size in MPA sites was smaller than in non-MPA sites, and this difference was statistically significant with a moderate effect size (two-sample t-test, t(`r round(mpa_2012_ttest$parameter, 0)`) = `r round(mpa_2012_ttest$statistic, 1)`, p < 0.005, Cohen's d = `r round(mpa_2012_effect$estimate, 2)`). In 2018, mean lobster size was larger in MPAs than in non-MPAs, and that difference was statistically significant with a moderate effect size (two-sample t-test, t(`r round(mpa_2018_ttest$parameter, 0)`) = `r round(mpa_2018_ttest$statistic, 1)`, p < 0.001, Cohen's d = `r round(mpa_2018_effect$estimate, 2)`).
 
 #### Summary
 
