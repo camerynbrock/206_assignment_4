@@ -130,7 +130,7 @@ There was a notable increase in lobster size between 2012 and 2018 in sites that
 lobster_size_dist <- lobster_tidy %>% 
   select(year, site, size_mm) %>% 
   filter(year %in% c("2012", "2018")) %>% 
-  mutate(mpa = ifelse(site %in% c("IVEE", "NAPL"), "MPA", "Non-MPA" ))
+  mutate("mpa" = ifelse(site %in% c("IVEE", "NAPL"), "MPA", "Non-MPA" ))
 
 library(ggridges)
 
@@ -272,14 +272,41 @@ lobster_summary <- lobster_size_dist %>%
   group_by(mpa, year) %>% 
   summarize(mean_size = mean(size_mm, na.rm = TRUE),
             sd_size = sd(size_mm, na.rm = TRUE ),
-            sample_n = n()) %>% 
-  rename("Status" = mpa,
-         "Sample Size" = sample_n,
-         "Mean Size (mm)" = mean_size,
-         "Standard Deviation" = sd_size,
-         "Year" = year) 
+            sample_n = n()) 
 
-kable(lobster_summary, digits = 2) %>% 
+lobster_table <- subset(lobster_summary, 
+                        select = -mpa)
+lobster_table$mpa_mean_size <- c('mpa_mean_size',
+                     'mpa_mean_size',
+                     'non_mpa_mean_size',
+                     'non_mpa_mean_size')
+lobster_table$mpa_sd <- c('mpa_sd',
+                     'mpa_sd',
+                     'non_mpa_sd',
+                     'non_mpa_sd')
+lobster_table$mpa_sample_n <- c('mpa_n',
+                     'mpa_n',
+                     'non_mpa_n',
+                     'non_mpa_n')
+
+lobster_table_wide <- lobster_table %>%
+  pivot_wider(names_from = mpa_mean_size,
+              values_from = mean_size) %>% 
+  pivot_wider(names_from = mpa_sd,
+              values_from = sd_size) %>% 
+  pivot_wider(names_from = mpa_sample_n,
+              values_from = sample_n) %>% 
+  group_by(year) %>% 
+  summarise_each(funs(na.omit))
+  
+
+kable(lobster_summary, 
+      digits = 2,
+      col.names = c("Status",
+                    "Year",
+                    "Mean Size (mm)",
+                    "Standard Deviation",
+                    "Sample Size")) %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) 
 
 ```
