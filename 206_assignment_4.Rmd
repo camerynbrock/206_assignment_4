@@ -51,7 +51,7 @@ Changes in lobster abundance and shifts in lobster size distribution from 2012 t
 
 #### 1. Changes in annual lobster abundance.
 
-California Spiny Lobster abundance increased from 2012 to 2018 at all five sampling locations. The two MPA sites (Isla Vista and Naples) had the lowest lobster abundance in 2012 and the greatest percent increase in lobster abundance from 2012 to 2018. The number of lobsters observed at Isla Vista increased 36-fold from 26 in 2012 to 946 in 2018. At Naples, lobster abundance increased 49-fold from 6 lobsters in 2012 to 298 in 2018. 
+California Spiny Lobster abundance increased from 2012 to 2018 at all five sampling locations (Figure 2). The two MPA sites (Isla Vista and Naples) had the lowest lobster abundance in 2012 and the greatest percent increase in lobster abundance from 2012 to 2018. The number of lobsters observed at Isla Vista increased 36-fold from 26 in 2012 to 946 in 2018. At Naples, lobster abundance increased 49-fold from 6 lobsters in 2012 to 298 in 2018. 
 
 ```{r Part A: Changes in lobster abundance}
 # Part A: Changes in annual lobster abundance by site
@@ -121,7 +121,7 @@ ggplot(lobster_abundance,
 
 ```
 
-***Figure 1.** California Spiny Lobster abundance in the Santa Barbara Channel from 2012 to 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012.*
+***Figure 2.** California Spiny Lobster abundance in the Santa Barbara Channel from 2012 to 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012.*
 
 #### 2. Shifts in lobster size distributions.
 
@@ -204,7 +204,7 @@ non_mpa_size_effect
 
 ```
 
-Size distributions (Figure 2) were compared for all sites in 2012 and 2018. Most notably, the median for lobster size increased in MPA sites between 2012 and 2018. However, in non-MPA sites, the median size remained relatively the same during that time period.
+Size distributions (Figure 3) were compared for all sites in 2012 and 2018. Most notably, the median for lobster size increased in MPA sites between 2012 and 2018. However, in non-MPA sites, the median size remained relatively the same during that time period.
 
 ```{r Part B: Shifts in lobster size distributions, message = FALSE, warning = FALSE, fig.asp = 7/20}
 
@@ -255,7 +255,7 @@ ggplot(data = lobster_size_dist, aes(x = size_mm,
 
 ```
 
-***Figure 2.** California Spiny Lobster size distributions in the Santa Barbara Channel in 2012 and 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012. White lines indicate the median lobster size for each facet.*
+***Figure 3.** California Spiny Lobster size distributions in the Santa Barbara Channel in 2012 and 2018. Sites shown in turquoise were established as Marine Protected Areas (MPAs) in 2012. White lines indicate the median lobster size for each facet.*
 
 #### 3. Mean lobster size in MPA and non_MPA sites.
 
@@ -323,8 +323,8 @@ In 2012, mean lobster size in MPA sites was smaller than in non-MPA sites, and t
 
 ### Summary
 
-- Lobster abundance increased at all site from 2012 to 2018, with the biggest increases at MPA sites (Figure 1).
-- Lobster size increased at MPA sites from 2012 to 2018, but did not increase at non-MPA sites (Figure 2).
+- Lobster abundance increased at all sites from 2012 to 2018, with the largest increases at MPA sites (Figure 2).
+- Median lobster size increased at MPA sites from 2012 to 2018, but did not increase at non-MPA sites (Figure 3).
 - Mean lobster size was larger at non-MPA sites than at MPA sites in 2012, but in 2018, mean lobster size was greater at MPA sites than non-MPA sites (Table 1).
 
 ### References 
