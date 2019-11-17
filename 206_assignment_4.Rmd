@@ -35,22 +35,23 @@ lobster_mpa <- lobster_tidy %>%
 ```
 ### Introduction
 
-To be written
--purpose: investigate how MPA status effects lobster abundance and size
+California spiny lobsters (*Panulirus interruptus*) are an important species in Southern California's coastal giant kelp forests (Figure 1). Additionally, California spiny lobsters are important in California's commercial and recreational fishing industry. In California, they were responsible for more than $15,000,000 in revenue in the 2015/16 season, and their price per pound more than doubled between 2005 and 2015 (Frimodig and Buck 2017). 
 
-![California Spiny Lobster. Credit: [Catalina Island Marine Institute](https://cimioutdoored.org/ca-spiny-lobster/)](lobster_image.jpg)
+In 2012, two sites in this study, Isla Vista and Naples, were established as Marine Protected Areas (MPAs). MPAs are meant to conserve, manage, and protect natural or cultural resources (NOAA 2018). Effective MPAs have been shown to more fish species and biomass than in normally fished areas (Edgar et al. 2014) and can benefit catch-rates for fisheries (Kerwath et al. 2013). In this study, we compare California spiny lobster samples from five sites on the Santa Barbara Coast from 2012-2018 to investigate how MPA status affects lobster abundance, community structure, and size.
+
+![California spiny lobster (*Panulirus interruptus*). Credit: [Catalina Island Marine Institute](https://cimioutdoored.org/ca-spiny-lobster/)](lobster_image.jpg)
 
 ### Data and Methods
 
-California Spiny Lobster data were provided by the [Environmental Data Initiative](https://environmentaldatainitiative.org/). Lobster abundace (individuals) and size (mm) were determined by annual SCUBA surveys at five long term kelp forest research sites in the Santa Barbara Channel. Two of the sites, Isla Vista and Naples, were established as Marine Protected Areas (MPAs) in 2012. Data collection began in late summer of 2012 before the start of fishing season and is ongoing.
+California spiny lobster data were provided by the [Environmental Data Initiative](https://environmentaldatainitiative.org/) (Reed 2019). Lobster abundace (individuals) and size (mm) were determined by annual SCUBA surveys at five long term kelp forest research sites in the Santa Barbara Channel. Two of the sites, Isla Vista and Naples, were established as Marine Protected Areas (MPAs) in 2012. Data collection began in late summer of 2012 before the start of fishing season and is ongoing.
 
-Changes in lobster abundance and shifts in lobster size distribution from 2012 to 2018 were explored for each study site. Mean lobster size (mm) at MPA sites and non-MPA sites was compared for both 2012 and 2018 using two-sample t-tests (\alpha = 0.05). Mean lobster size in 2012 and 2018 was compared for MPA and non-MPA sites using two-sample t-tests. R software (version 3.5.1) and RStudio (version 1.2.1335) were used for data analysis and figure generation. 
+Changes in lobster abundance and shifts in lobster size distribution from 2012 to 2018 were explored for each study site. Mean lobster size (mm) at MPA sites and non-MPA sites was compared for both 2012 and 2018 using two-sample t-tests (alpha = 0.05). Mean lobster size in 2012 and 2018 was compared for MPA and non-MPA sites using two-sample t-tests. R software (version 3.5.1) and RStudio (version 1.2.1335) were used for data analysis and figure generation. 
 
 ### Results
 
 #### 1. Changes in annual lobster abundance.
 
-California Spiny Lobster abundance increased from 2012 to 2018 at all five sampling locations. The two Marine Protected Area (MPA) sites (Isla Vista and Naples) had the lowest lobster abundance in 2012 and the greatest percent increase in lobster abundance from 2012 to 2018. The number of lobsters observed at Isla Vista increased 36-fold from 26 in 2012 to 946 in 2018. At Naples, lobster abundance increased 49-fold from 6 lobsters in 2012 to 298 in 2018. 
+California Spiny Lobster abundance increased from 2012 to 2018 at all five sampling locations. The two MPA sites (Isla Vista and Naples) had the lowest lobster abundance in 2012 and the greatest percent increase in lobster abundance from 2012 to 2018. The number of lobsters observed at Isla Vista increased 36-fold from 26 in 2012 to 946 in 2018. At Naples, lobster abundance increased 49-fold from 6 lobsters in 2012 to 298 in 2018. 
 
 ```{r Part A: Changes in lobster abundance}
 # Part A: Changes in annual lobster abundance by site
@@ -316,9 +317,9 @@ kable(lobster_table_wide,
 
 ```
 
-Mean lobster size in MPA sites was  larger in 2018 (77.6 ± 11.7mm, mean ± standard deviation) compared to in 2012 (67.4 ± 12.2mm)  and the increase was statistically significant with a large effect size (two-sample t-test, t (`r round(mpa_size_ttest$parameter, 0)`) = `r round(mpa_size_ttest$statistic, 1)`, p < 0.001, Cohen's d = `r round(mpa_size_effect$estimate, 2)`)). No significant change in mean lobster size was observed in sites that were not established as MPAs (Arroyo Quemado, Carpinteria, and Mohawk) between 2012 (74.9 ± 12.4mm) and 2018 (73.6 ± 10.1mm; two-sample t-test, t(`r round(non_mpa_size_ttest$parameter, 0)`) = `r round(non_mpa_size_ttest$statistic, 1)`, p = `r round(non_mpa_size_ttest$p.value, 2)`, Cohen's d = `r round(non_mpa_size_effect$estimate, 2)`).  
+Mean lobster size in MPA sites was  larger in 2018 (77.6 ± 11.7mm, mean ± standard deviation) compared to in 2012 (67.4 ± 12.2mm)  and the increase was statistically significant with a large effect size (two-sample t-test, t (`r round(mpa_size_ttest$parameter, 0)`) = `r round(mpa_size_ttest$statistic, 1)`, p < 0.0001, Cohen's d = `r round(mpa_size_effect$estimate, 2)`)). No significant change in mean lobster size was observed in sites that were not established as MPAs (Arroyo Quemado, Carpinteria, and Mohawk) between 2012 (74.9 ± 12.4mm) and 2018 (73.6 ± 10.1mm; two-sample t-test, t(`r round(non_mpa_size_ttest$parameter, 0)`) = `r round(non_mpa_size_ttest$statistic, 1)`, p = `r round(non_mpa_size_ttest$p.value, 2)`, Cohen's d = `r round(non_mpa_size_effect$estimate, 2)`).  
 
-In 2012, mean lobster size in MPA sites was smaller than in non-MPA sites, and this difference was statistically significant with a moderate effect size (two-sample t-test, t(`r round(mpa_2012_ttest$parameter, 0)`) = `r round(mpa_2012_ttest$statistic, 1)`, p < 0.005, Cohen's d = `r round(mpa_2012_effect$estimate, 2)`). In 2018, mean lobster size was larger in MPAs than in non-MPAs, and that difference was statistically significant with a moderate effect size (two-sample t-test, t(`r round(mpa_2018_ttest$parameter, 0)`) = `r round(mpa_2018_ttest$statistic, 1)`, p < 0.001, Cohen's d = `r round(mpa_2018_effect$estimate, 2)`).
+In 2012, mean lobster size in MPA sites was smaller than in non-MPA sites, and this difference was statistically significant with a moderate effect size (two-sample t-test, t(`r round(mpa_2012_ttest$parameter, 0)`) = `r round(mpa_2012_ttest$statistic, 1)`, p = `r round(mpa_2012_ttest$p.value, 4)` , Cohen's d = `r round(mpa_2012_effect$estimate, 2)`). In 2018, mean lobster size was larger in MPAs than in non-MPAs, and that difference was statistically significant with a moderate effect size (two-sample t-test, t(`r round(mpa_2018_ttest$parameter, 0)`) = `r round(mpa_2018_ttest$statistic, 1)`, p < 0.0001, Cohen's d = `r round(mpa_2018_effect$estimate, 2)`).
 
 ### Summary
 
@@ -328,5 +329,12 @@ In 2012, mean lobster size in MPA sites was smaller than in non-MPA sites, and t
 
 ### References 
 
-**Reed D. 2019.** SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012. Environmental Data Initiative. https://doi.org/10.6073/pasta/a593a675d644fdefb736750b291579a0. Dataset accessed 10/30/2019.
+**Edgar, G. J., Stuart‐Smith, R. D., Willis, T. J., Kininmonth, S., Baker, S. C., Banks, S., and Thomson, R. J. (2014).** *Global conservation outcomes depend on marine protected areas with five key features.* Nature, 506, 216–220. https://doi.org/10.1038/nature13022. Accessed 11/16/2019. 
 
+**Frimodig, A. and Buck, T. (2017).** *State of the California South Coast Supplemental Report: California Spiny Lobster.*  California Department of Fish and Wildlife. https://nrm.dfg.ca.gov/FileHandler.ashx?DocumentID=141295&inline. Accessed 11/16/2019.
+
+**Kerwath, S., Winker, H., Gotz, A., and Attwood, C. (2013).** *Marine protected area improves yield without disadvantaging fishers.* Nature Communitications, 4, Article number: 2347. https://www.nature.com/articles/ncomms3347. Accessed 11/16/2019.
+
+**National Oceanic and Atmospheric Administration (NOAA) (2018).** *What is a marine protected area?* National Ocean Service. https://oceanservice.noaa.gov/facts/mpa.html. Accessed 11/16/2019.
+
+**Reed D. (2019).** *SBC LTER: Reef: Abundance, size and fishing effort for California Spiny Lobster (Panulirus interruptus), ongoing since 2012.* Environmental Data Initiative. https://doi.org/10.6073/pasta/a593a675d644fdefb736750b291579a0. Dataset accessed 10/30/2019.
