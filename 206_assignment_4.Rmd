@@ -54,7 +54,7 @@ Changes in lobster abundance and shifts in lobster size distribution from 2012 t
 
 #### 1. Changes in annual lobster abundance.
 
-California spiny lobster abundance was sampled annually from the estblishment of the MPAs in 2012 to 2018 in all five sites. Lobster abundance increased from 2012 to 2018 at all five sampling locations (Figure 2). The two MPA sites (Isla Vista and Naples) had the lowest lobster abundance in 2012 and the greatest percent increase in lobster abundance from 2012 to 2018. The number of lobsters observed at Isla Vista increased 36-fold, from 26 in 2012 to 946 in 2018. At Naples, lobster abundance increased 49-fold, from 6 lobsters in 2012 to 298 in 2018. 
+California spiny lobster abundance was sampled annually from 2012 to 2018 at all five sites. Lobster abundance increased from 2012 to 2018 at all five sampling locations (Figure 2). The two MPA sites (Isla Vista and Naples) had the lowest lobster abundance in 2012 and the greatest percent increase in lobster abundance from 2012 to 2018. The number of lobsters observed at Isla Vista increased 36-fold, from 26 in 2012 to 946 in 2018. At Naples, lobster abundance increased 49-fold, from 6 lobsters in 2012 to 298 in 2018. 
 
 ```{r Part A: Changes in lobster abundance, fig.align = 'center'}
 # Part A: Changes in annual lobster abundance by site
